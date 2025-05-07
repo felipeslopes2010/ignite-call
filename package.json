@@ -2,11 +2,13 @@
   "name": "ignite-call",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "@ignite-ui/react": "^2.2.4",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
