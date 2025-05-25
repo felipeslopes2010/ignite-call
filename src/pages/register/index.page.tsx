@@ -20,10 +20,20 @@ const registerFormSchema = z.object({
   name: z
     .string()
     .min(3, { message: 'O nome precisa ter pelo menos 3 letras.' })
-    .regex(/^([a-z]+)$/i, {
-      message: 'O nome pode ter apenas letras.',
+    .regex(/^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$/, {
+      message:
+        'O nome pode conter apenas letras e espaços únicos entre palavras.',
     })
-    .transform((username) => username.toLowerCase()),
+    .transform((name) =>
+      name
+        .trim()
+        .replace(/\s+/g, ' ')
+        .split(' ')
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+        )
+        .join(' '),
+    ),
 })
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
