@@ -11,6 +11,7 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
+  { ignores: ['**/*.d.ts'] },
   ...compat.extends(
     '@rocketseat/eslint-config/react',
     'next',
